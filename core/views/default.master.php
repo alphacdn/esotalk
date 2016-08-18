@@ -16,10 +16,31 @@
   <meta charset='<?php echo T("charset", "utf-8"); ?>'>
   <title><?php echo sanitizeHTML($data["pageTitle"]); ?></title>
   <?php echo $data["head"]; ?>
+  <style>::-webkit-scrollbar-track {background-color: transparent;}::-webkit-scrollbar {width: 12px;background: #efefef;}::-webkit-scrollbar-thumb {background-color: #999;}</style>
 </head>
 
 <body class='<?php echo $data["bodyClass"]; ?>'>
 <?php $this->trigger("pageStart"); ?>
+
+<nav id="navbar" class="navbar navbar-default navbar-static-top">
+  <div id="navbar-center">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="./"><img src="//alphacdn.com/assets/img/logo-white.svg"></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="//dash.alpha.uf-web.de" title="Dashboard">Dashboard <i class="fa fa-database fa-fw"></i></a></li>
+        <li class="active">
+          <a href="./" target="_blank" title="Forum">Community <i class="fa fa-users fa-fw"></i></a>
+        </li>
+        <li>
+          <a href="//support.alphacdn.com" target="_blank" title="Hilfe">Hilfe <i class="fa fa-comments fa-fw"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div id='messages'>
   <?php foreach ($data["messages"] as $message): ?>
