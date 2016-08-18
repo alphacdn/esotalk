@@ -32,7 +32,7 @@ function makeURL($startFrom = 0, $searchString = "")
 <div class='scrubberContent'>
 
 <?php if (ET::$session->isAdmin()): ?>
-<a href='<?php echo URL("members/create"); ?>' class='button big' id='createMemberLink'><i class='icon-plus'></i> <?php echo T("Create Member"); ?></a>
+<a href='<?php echo URL("members/create"); ?>' class='button big' id='createMemberLink'><i class='fa fa-plus'></i> <?php echo T("Create Member"); ?></a>
 <?php endif; ?>
 
 <?php if (!$data["searchString"] and $data["orderBy"] == "name"): ?>
@@ -77,9 +77,9 @@ foreach ($letters as $letter) {
 
 <form class='search big' id='memberSearch' action='<?php echo URL(makeURL()); ?>' method='get'>
 <fieldset>
-<i class='icon-search'></i>
+<i class='fa fa-search'></i>
 <input name='search' type='text' class='text' value='<?php echo $data["searchString"]; ?>' spellcheck='false' placeholder='<?php echo T("Filter by name or group..."); ?>'/>
-<?php if ($data["searchString"]): ?><a class='control-reset' href='<?php echo URL(makeURL()); ?>'><i class='icon-remove'></i></a><?php endif; ?>
+<?php if ($data["searchString"]): ?><a class='control-reset' href='<?php echo URL(makeURL()); ?>'><i class='fa fa-remove'></i></a><?php endif; ?>
 </fieldset>
 </form>
 

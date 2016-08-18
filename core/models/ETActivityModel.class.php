@@ -385,7 +385,7 @@ public static function postActivity($item, $member)
 public static function postNotification(&$item)
 {
 	return array(
-		"<i class='star icon-star'></i> ".sprintf(T("%s posted in %s."), name($item["fromMemberName"]), "<strong>".sanitizeHTML($item["data"]["title"])."</strong>"),
+		"<i class='star fa fa-star'></i> ".sprintf(T("%s posted in %s."), name($item["fromMemberName"]), "<strong>".sanitizeHTML($item["data"]["title"])."</strong>"),
 		URL(postURL($item["postId"]))
 	);
 }
@@ -415,7 +415,7 @@ public static function groupChangeNotification($item)
 {
 	$groups = memberGroup($item["data"]["account"], $item["data"]["groups"], true);
 	return array(
-		"<i class='icon-user'></i> ".sprintf(T("%s changed your group to %s."), name($item["fromMemberName"]), "<strong>".$groups."</strong>"),
+		"<i class='fa fa-user'></i> ".sprintf(T("%s changed your group to %s."), name($item["fromMemberName"]), "<strong>".$groups."</strong>"),
 		URL(memberURL("me"))
 	);
 }
@@ -526,7 +526,7 @@ public static function postEmail($item, $member)
 public static function updateAvailableNotification($item)
 {
 	return array(
-		"<i class='icon-wrench'></i> ".sprintf(T("A new version of esoTalk (%s) is available."), "<strong>".$item["data"]["version"]."</strong>"),
+		"<i class='fa fa-wrench'></i> ".sprintf(T("A new version of esoTalk (%s) is available."), "<strong>".$item["data"]["version"]."</strong>"),
 		!empty($item["data"]["releaseNotes"]) ? $item["data"]["releaseNotes"] : "http://esotalk.org/"
 	);
 }
@@ -540,7 +540,7 @@ public static function updateAvailableNotification($item)
 public static function unapprovedNotification($item)
 {
 	return array(
-		"<i class='icon-user'></i> ".sprintf(T("%s has registered and is awaiting approval."), "<strong>".name($item["data"]["username"])."</strong>"),
+		"<i class='fa fa-user'></i> ".sprintf(T("%s has registered and is awaiting approval."), "<strong>".name($item["data"]["username"])."</strong>"),
 		URL("admin/unapproved")
 	);
 }

@@ -23,7 +23,7 @@ ET.disableFixedPositions = true;
 $.fn.tooltip = function() { return this; };
 // Make the user menu into a popup, and take notifications out of the user menu.
 $(function() {
-	$("#forumTitle").before($("#userMenu").popup({alignment: "right", content: "<i class='icon-reorder'></i>"}));
+	$("#forumTitle").before($("#userMenu").popup({alignment: "right", content: "<i class='fa fa-arrows'></i>"}));
 	$("#forumTitle").before($("#notifications").parent())
 		.css("webkitTransform", "scale(1)"); // force a redraw to fix a webkit layout bug
 });
@@ -49,7 +49,7 @@ $(function() {
 <div id='hdr-inner'>
 
 <?php if ($data["backButton"]): ?>
-<a href='<?php echo $data["backButton"]["url"]; ?>' id='backButton' title='<?php echo T("Back to {$data["backButton"]["type"]}"); ?>'><i class="icon-chevron-left"></i></a>
+<a href='<?php echo $data["backButton"]["url"]; ?>' id='backButton' title='<?php echo T("Back to {$data["backButton"]["type"]}"); ?>'><i class="fa fa-chevron-left"></i></a>
 <?php endif; ?>
 
 <ul id='userMenu' class='menu'>

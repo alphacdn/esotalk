@@ -27,7 +27,7 @@ echo star($conversation["conversationId"], $conversation["starred"]);
 
 // Output an "unread indicator", allowing the user to mark the conversation as read.
 if (ET::$session->user and $conversation["unread"])
-	echo " <a href='".URL("conversation/markAsRead/".$conversation["conversationId"]."?token=".ET::$session->token."&return=".urlencode(ET::$controller->selfURL))."' class='unreadIndicator' title='".T("Mark as read")."'><i class='icon-ok'></i></a> ";
+	echo " <a href='".URL("conversation/markAsRead/".$conversation["conversationId"]."?token=".ET::$session->token."&return=".urlencode(ET::$controller->selfURL))."' class='unreadIndicator' title='".T("Mark as read")."'><i class='fa fa-check'></i></a> ";
 ?></div>
 <?php endif; ?>
 <div class='col-conversation'><?php

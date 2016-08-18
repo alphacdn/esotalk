@@ -42,9 +42,9 @@ if ($conversation["startMemberId"] == ET::$session->userId) $classes[] = "mine";
 // Search within conversation form ?>
 <form class='search' id='searchWithinConversation' action='<?php echo URL(conversationURL($conversation["conversationId"], $conversation["title"])); ?>' method='get'>
 <fieldset>
-<i class='icon-search'></i>
+<i class='fa fa-search'></i>
 <input name='search' type='text' class='text' value='<?php echo sanitizeHTML($data["searchString"]); ?>' placeholder='<?php echo T("Search"); ?>'/>
-<?php if ($data["searchString"]): ?><a href='<?php echo URL(conversationURL($conversation["conversationId"], $conversation["title"])); ?>' class='control-reset'><i class='icon-remove'></i></a><?php endif; ?>
+<?php if ($data["searchString"]): ?><a href='<?php echo URL(conversationURL($conversation["conversationId"], $conversation["title"])); ?>' class='control-reset'><i class='fa fa-trash-o'></i></a><?php endif; ?>
 </fieldset>
 </form>
 
@@ -54,9 +54,9 @@ echo starButton($conversation["conversationId"], $conversation["starred"])."\n";
 ?>
 
 <?php if (!ET::$session->user): ?>
-<a href='<?php echo URL("user/login?return=".urlencode($this->selfURL)."/#reply"); ?>' class='button big'><i class="icon-plus"></i> <?php echo T("Post a Reply"); ?></a>
+<a href='<?php echo URL("user/login?return=".urlencode($this->selfURL)."/#reply"); ?>' class='button big'><i class="fa fa-plus"></i> <?php echo T("Post a Reply"); ?></a>
 <?php else: ?>
-<a href='#reply' class='button big' id='jumpToReply'><i class='icon-plus'></i> <?php echo T("Post a Reply"); ?></a>
+<a href='#reply' class='button big' id='jumpToReply'><i class='fa fa-plus'></i> <?php echo T("Post a Reply"); ?></a>
 <?php endif; ?>
 
 <?php $this->trigger("renderScrubberBefore", array($data)); ?>
@@ -76,7 +76,7 @@ $oldestYear = date("Y", $conversation["startTime"]);
 $oldestMonth = date("n", $conversation["startTime"]);
 
 // Output the "original post" item. ?>
-<li class='scrubber-op scrubber-nav' data-index='first'><a href='<?php echo URL(makeURL()); ?>'><i class='icon-arrow-up'></i> <?php echo T("Original Post"); ?></a></li>
+<li class='scrubber-op scrubber-nav' data-index='first'><a href='<?php echo URL(makeURL()); ?>'><i class='fa fa-arrow-up'></i> <?php echo T("Original Post"); ?></a></li>
 <?php
 
 // Work out the year/month which we are viewing from and should therefore highlight as "selected".
@@ -144,7 +144,7 @@ foreach ($recentMonths as $month) {
 }
 
 // Always output a "Latest" item. ?>
-<li class='scrubber-now scrubber-nav' data-index='last'><a href='<?php echo URL(makeURL("last")); ?>'><i class='icon-arrow-down'></i> <?php echo T("Latest"); ?></a></li>
+<li class='scrubber-now scrubber-nav' data-index='last'><a href='<?php echo URL(makeURL("last")); ?>'><i class='fa fa-arrow-down'></i> <?php echo T("Latest"); ?></a></li>
 </ul>
 <?php endif; ?>
 
@@ -187,7 +187,7 @@ if ($data["controlsMenu"]->count()): ?>
 if (count($conversation["membersAllowedSummary"]) or $conversation["startMemberId"] == ET::$session->userId or $conversation["canModerate"]): ?>
 <div id='conversationPrivacy' class='area'>
 <span class='allowedList action'><?php $this->renderView("conversation/membersAllowedSummary", $data); ?></span>
-<?php if ($conversation["startMemberId"] == ET::$session->userId): ?><a href='<?php echo URL("conversation/edit/".$conversation["conversationId"]); ?>' id='control-changeMembersAllowed'><i class='icon-pencil'></i> <?php echo T("Change"); ?></a><?php endif; ?>
+<?php if ($conversation["startMemberId"] == ET::$session->userId): ?><a href='<?php echo URL("conversation/edit/".$conversation["conversationId"]); ?>' id='control-changeMembersAllowed'><i class='fa fa-pencil'></i> <?php echo T("Change"); ?></a><?php endif; ?>
 </div>
 <?php endif; ?>
 

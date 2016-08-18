@@ -115,47 +115,47 @@ public function action_index($channelSlug = false)
 
 		// Mark as read controls
 		if (ET::$session->user) {
-			$controls->add("markAllAsRead", "<a href='".URL("conversations/markAllAsRead/?token=".ET::$session->token."' id='control-markAllAsRead'><i class='icon-check'></i> ".T("Mark all as read")."</a>"));
-			$controls->add("markListedAsRead", "<a href='".URL("conversations/$channelSlug/?search=".urlencode($searchString)."&markAsRead=1&token=".ET::$session->token."' id='control-markListedAsRead'><i class='icon-list'></i> ".T("Mark listed as read")."</a>"));
+			$controls->add("markAllAsRead", "<a href='".URL("conversations/markAllAsRead/?token=".ET::$session->token."' id='control-markAllAsRead'><i class='fa fa-check'></i> ".T("Mark all as read")."</a>"));
+			$controls->add("markListedAsRead", "<a href='".URL("conversations/$channelSlug/?search=".urlencode($searchString)."&markAsRead=1&token=".ET::$session->token."' id='control-markListedAsRead'><i class='fa fa-list'></i> ".T("Mark listed as read")."</a>"));
 		}
 
 		// Add the default gambits to the gambit cloud: gambit text => css class to apply.
 		$gambits = array(
 			"main" => array(
-				T("gambit.sticky") => array("gambit-sticky", "icon-pushpin"),
+				T("gambit.sticky") => array("gambit-sticky", "fa fa-thumb-tack"),
 			),
 			"time" => array(
-				T("gambit.order by newest") => array("gambit-orderByNewest", "icon-list-ol"),
-				T("gambit.active last ? hours") => array("gambit-activeLastHours", "icon-time"),
-				T("gambit.active last ? days") => array("gambit-activeLastDays", "icon-calendar"),
-				T("gambit.active today") => array("gambit-activeToday", "icon-asterisk"),
-				T("gambit.dead") => array("gambit-dead", "icon-remove"),
-				T("gambit.locked") => array("gambit-locked", "icon-lock"),
+				T("gambit.order by newest") => array("gambit-orderByNewest", "fa fa-list-ol"),
+				T("gambit.active last ? hours") => array("gambit-activeLastHours", "fa fa-clock-o"),
+				T("gambit.active last ? days") => array("gambit-activeLastDays", "fa fa-calendar"),
+				T("gambit.active today") => array("gambit-activeToday", "fa fa-asterisk"),
+				T("gambit.dead") => array("gambit-dead", "fa fa-trash-o"),
+				T("gambit.locked") => array("gambit-locked", "fa fa-lock"),
 			),
 			"member" => array(
-				T("gambit.author:").T("gambit.member") => array("gambit-author", "icon-user"),
-				T("gambit.contributor:").T("gambit.member") => array("gambit-contributor", "icon-user"),
+				T("gambit.author:").T("gambit.member") => array("gambit-author", "fa fa-user"),
+				T("gambit.contributor:").T("gambit.member") => array("gambit-contributor", "fa fa-user"),
 			),
 			"replies" => array(
-				T("gambit.has replies") => array("gambit-hasReplies", "icon-comment"),
-				T("gambit.has >10 replies") => array("gambit-replies", "icon-comments"),
-				T("gambit.order by replies") => array("gambit-orderByReplies", "icon-list-ol"),
+				T("gambit.has replies") => array("gambit-hasReplies", "fa fa-comment"),
+				T("gambit.has >10 replies") => array("gambit-replies", "fa fa-comments"),
+				T("gambit.order by replies") => array("gambit-orderByReplies", "fa fa-list-ol"),
 			),
 			"misc" => array(
-				T("gambit.random") => array("gambit-random", "icon-random"),
-				T("gambit.reverse") => array("gambit-reverse", "icon-exchange"),
+				T("gambit.random") => array("gambit-random", "fa fa-random"),
+				T("gambit.reverse") => array("gambit-reverse", "fa fa-exchange"),
 			)
 		);
 
 		// Add some more personal gambits if there is a user logged in.
 		if (ET::$session->user) {
-			addToArrayString($gambits["main"], T("gambit.private"), array("gambit-private", "icon-envelope-alt"), 1);
-			addToArrayString($gambits["main"], T("gambit.starred"), array("gambit-starred", "icon-star"), 2);
-			addToArrayString($gambits["main"], T("gambit.draft"), array("gambit-draft", "icon-pencil"), 3);
-			addToArrayString($gambits["main"], T("gambit.ignored"), array("gambit-ignored", "icon-eye-close"), 4);
-			addToArrayString($gambits["time"], T("gambit.unread"), array("gambit-unread", "icon-inbox"), 0);
-			addToArrayString($gambits["member"], T("gambit.author:").T("gambit.myself"), array("gambit-authorMyself", "icon-smile"), 0);
-			addToArrayString($gambits["member"], T("gambit.contributor:").T("gambit.myself"), array("gambit-contributorMyself", "icon-smile"), 2);
+			addToArrayString($gambits["main"], T("gambit.private"), array("gambit-private", "fa fa-envelope"), 1);
+			addToArrayString($gambits["main"], T("gambit.starred"), array("gambit-starred", "fa fa-star"), 2);
+			addToArrayString($gambits["main"], T("gambit.draft"), array("gambit-draft", "fa fa-pencil"), 3);
+			addToArrayString($gambits["main"], T("gambit.ignored"), array("gambit-ignored", "fa fa-eye-slash"), 4);
+			addToArrayString($gambits["time"], T("gambit.unread"), array("gambit-unread", "fa fa-inbox"), 0);
+			addToArrayString($gambits["member"], T("gambit.author:").T("gambit.myself"), array("gambit-authorMyself", "fa fa-smile-o"), 0);
+			addToArrayString($gambits["member"], T("gambit.contributor:").T("gambit.myself"), array("gambit-contributorMyself", "fa fa-smile-o"), 2);
 		}
 
 		$this->trigger("constructGambitsMenu", array(&$gambits));

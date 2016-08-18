@@ -582,7 +582,7 @@ hideAllPopups: function() {
 $.fn.popup = function(options) {
 
 	options = options || {};
-	options.content = options.content || "<i class='icon-cog'></i> <i class='icon-caret-down'></i>";
+	options.content = options.content || "<i class='fa fa-cog'></i> <i class='icon-caret-down'></i>";
     options.class = options.class || "";
 
     // Add space before the class.

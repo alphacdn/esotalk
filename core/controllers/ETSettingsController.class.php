@@ -82,7 +82,7 @@ protected function profile($pane = "")
 	$actions = ETFactory::make("menu");
 
 	// Add a link to go back to the user's member profile.
-	$actions->add("viewProfile", "<a href='".URL("member/me")."'><i class='icon-eye-open'></i> ".T("View your profile")."</a>");
+	$actions->add("viewProfile", "<a href='".URL("member/me")."'><i class='fa fa-eye-slash'></i> ".T("View your profile")."</a>");
 
 	$this->trigger("initProfile", array($panes, $controls, $actions));
 
@@ -255,7 +255,7 @@ public function fieldEmailPrivateAdd($form)
  */
 public function fieldEmailReplyToStarred($form)
 {
-	return "<label class='checkbox'>".$form->checkbox("post")." <i class='star icon-star'></i> ".T("Email me when someone posts in a conversation I have followed")."</label>";
+	return "<label class='checkbox'>".$form->checkbox("post")." <i class='star fa fa-star'></i> ".T("Email me when someone posts in a conversation I have followed")."</label>";
 }
 
 

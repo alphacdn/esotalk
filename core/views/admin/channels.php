@@ -22,7 +22,7 @@ $(function() {
 
 <p class='help'><?php echo T("message.channelsHelp"); ?></p>
 
-<p><a href='<?php echo URL("admin/channels/create"); ?>' class='button' id='createChannelLink'><span class='icon-plus'></span> <?php echo T("Create Channel"); ?></a></p>
+<p><a href='<?php echo URL("admin/channels/create"); ?>' class='button' id='createChannelLink'><span class='fa fa-plus'></span> <?php echo T("Create Channel"); ?></a></p>
 
 <ol class='sortable list channelList'>
 
@@ -54,8 +54,8 @@ elseif ($channel["depth"] < $curDepth) {
 <li id='channel_<?php echo $channel["channelId"]; ?>' data-id='<?php echo $channel["channelId"]; ?>'>
 <div>
 <div class='controls'>
-<a href='<?php echo URL("admin/channels/edit/".$channel["channelId"]); ?>' class='control-edit' title='<?php echo T("Edit"); ?>'><i class='icon-edit'></i></a>
-<a href='<?php echo URL("admin/channels/delete/".$channel["channelId"]); ?>' class='control-delete' title='<?php echo T("Delete"); ?>'><i class='icon-remove'></i></a>
+<a href='<?php echo URL("admin/channels/edit/".$channel["channelId"]); ?>' class='control-edit' title='<?php echo T("Edit"); ?>'><i class='fa fa-pencil-square-o'></i></a>
+<a href='<?php echo URL("admin/channels/delete/".$channel["channelId"]); ?>' class='control-delete' title='<?php echo T("Delete"); ?>'><i class='fa fa-trash-o'></i></a>
 </div>
 <div class='info'>
 <span class='channel channel-<?php echo $channel["channelId"]; ?>'><?php echo $channel["title"]; ?></span>

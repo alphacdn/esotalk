@@ -229,36 +229,36 @@ public function action_index($conversationId = false, $year = false, $month = fa
 
 		// Ignore conversation control
 		if (ET::$session->user) {
-			$controls->add("ignore", "<a href='".URL("conversation/ignore/".$conversation["conversationId"]."/?token=".ET::$session->token."&return=".urlencode($this->selfURL))."' id='control-ignore'><i class='icon-eye-close'></i> <span>".T($conversation["ignored"] ? "Unignore conversation" : "Ignore conversation")."</span></a>");
+			$controls->add("ignore", "<a href='".URL("conversation/ignore/".$conversation["conversationId"]."/?token=".ET::$session->token."&return=".urlencode($this->selfURL))."' id='control-ignore'><i class='fa fa-eye-slash'></i> <span>".T($conversation["ignored"] ? "Unignore conversation" : "Ignore conversation")."</span></a>");
 		}
 
 		// Mark as unread/read control
 		if (ET::$session->user) {
-			$controls->add("read", "<a href='".URL("conversation/read/".$conversation["conversationId"]."/?token=".ET::$session->token)."' id='control-read'><i class='icon-circle'></i> <span>".T($conversation["lastRead"] >= $conversation["countPosts"] ? "Mark as unread" : "Mark as read")."</span></a>");
+			$controls->add("read", "<a href='".URL("conversation/read/".$conversation["conversationId"]."/?token=".ET::$session->token)."' id='control-read'><i class='fa fa-circle'></i> <span>".T($conversation["lastRead"] >= $conversation["countPosts"] ? "Mark as unread" : "Mark as read")."</span></a>");
 		}
 
 		if ($conversation["canModerate"] or $conversation["startMemberId"] == ET::$session->userId) {
 			$controls->separator();
 
 			// Add the change channel control.
-			$controls->add("changeChannel", "<a href='".URL("conversation/changeChannel/".$conversation["conversationId"]."/?return=".urlencode($this->selfURL))."' id='control-changeChannel'><i class='icon-tag'></i> <span>".T("Change channel")."</span></a>");
+			$controls->add("changeChannel", "<a href='".URL("conversation/changeChannel/".$conversation["conversationId"]."/?return=".urlencode($this->selfURL))."' id='control-changeChannel'><i class='fa-tag'></i> <span>".T("Change channel")."</span></a>");
 		}
 
 		// If the user has permission to moderate this conversation...
 		if ($conversation["canModerate"]) {
 			
 			// Add the sticky/unsticky control.
-			$controls->add("sticky", "<a href='".URL("conversation/sticky/".$conversation["conversationId"]."/?token=".ET::$session->token."&return=".urlencode($this->selfURL))."' id='control-sticky'><i class='icon-pushpin'></i> <span>".T($conversation["sticky"] ? "Unsticky" : "Sticky")."</span></a>");
+			$controls->add("sticky", "<a href='".URL("conversation/sticky/".$conversation["conversationId"]."/?token=".ET::$session->token."&return=".urlencode($this->selfURL))."' id='control-sticky'><i class='fa fa-thumb-tack'></i> <span>".T($conversation["sticky"] ? "Unsticky" : "Sticky")."</span></a>");
 
 			// Add the lock/unlock control.
-			$controls->add("lock", "<a href='".URL("conversation/lock/".$conversation["conversationId"]."/?token=".ET::$session->token."&return=".urlencode($this->selfURL))."' id='control-lock'><i class='icon-lock'></i> <span>".T($conversation["locked"] ? "Unlock" : "Lock")."</span></a>");
+			$controls->add("lock", "<a href='".URL("conversation/lock/".$conversation["conversationId"]."/?token=".ET::$session->token."&return=".urlencode($this->selfURL))."' id='control-lock'><i class='fa fa-lock'></i> <span>".T($conversation["locked"] ? "Unlock" : "Lock")."</span></a>");
 		}
 
 		if ($conversation["canDeleteConversation"]) {
 
 			// Add the delete conversation control.
 			$controls->separator();
-			$controls->add("delete", "<a href='".URL("conversation/delete/".$conversation["conversationId"]."/?token=".ET::$session->token)."' id='control-delete'><i class='icon-remove'></i> <span>".T("Delete conversation")."</span></a>");
+			$controls->add("delete", "<a href='".URL("conversation/delete/".$conversation["conversationId"]."/?token=".ET::$session->token)."' id='control-delete'><i class='fa-remove'></i> <span>".T("Delete conversation")."</span></a>");
 
 		}
 
@@ -1288,7 +1288,7 @@ protected function formatPostForTemplate($post, $conversation)
 		if (empty($post["preferences"]["hideOnline"])) {
 			$lastAction = ET::memberModel()->getLastActionInfo($post["lastActionTime"], $post["lastActionDetail"]);
 			if ($lastAction[0]) $lastAction[0] = " (".sanitizeHTML($lastAction[0]).")";
-			if ($lastAction) array_unshift($formatted["info"], "<".(!empty($lastAction[1]) ? "a href='{$lastAction[1]}'" : "span")." class='online' title='".T("Online")."{$lastAction[0]}'><i class='icon-circle'></i></".(!empty($lastAction[1]) ? "a" : "span").">");
+			if ($lastAction) array_unshift($formatted["info"], "<".(!empty($lastAction[1]) ? "a href='{$lastAction[1]}'" : "span")." class='online' title='".T("Online")."{$lastAction[0]}'><i class='fa fa-circle'></i></".(!empty($lastAction[1]) ? "a" : "span").">");
 		}
 
 		// Show the user's group type.
@@ -1303,12 +1303,12 @@ protected function formatPostForTemplate($post, $conversation)
 
 		// If the user can reply, add a quote control.
 		if ($conversation["canReply"])
-			$formatted["controls"][] = "<a href='".URL(conversationURL($conversation["conversationId"], $conversation["title"])."/?quote=".$post["postId"]."#reply")."' title='".T("Quote")."' class='control-quote'><i class='icon-quote-left'></i></a>";
+			$formatted["controls"][] = "<a href='".URL(conversationURL($conversation["conversationId"], $conversation["title"])."/?quote=".$post["postId"]."#reply")."' title='".T("Quote")."' class='control-quote'><i class='fa fa-quote-left'></i></a>";
 
 		// If the user can edit the post, add edit/delete controls.
 		if ($canEdit) {
-			$formatted["controls"][] = "<a href='".URL("conversation/editPost/".$post["postId"])."' title='".T("Edit")."' class='control-edit'><i class='icon-edit'></i></a>";
-			$formatted["controls"][] = "<a href='".URL("conversation/deletePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Delete")."' class='control-delete'><i class='icon-remove'></i></a>";
+			$formatted["controls"][] = "<a href='".URL("conversation/editPost/".$post["postId"])."' title='".T("Edit")."' class='control-edit'><i class='fa fa-pencil-square-o'></i></a>";
+			$formatted["controls"][] = "<a href='".URL("conversation/deletePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Delete")."' class='control-delete'><i class='fa fa-trash-o'></i></a>";
 		}
 
 	}
@@ -1321,7 +1321,7 @@ protected function formatPostForTemplate($post, $conversation)
 
 		// If the user can edit the post, add a restore control.
 		if ($canEdit)
-			$formatted["controls"][] = "<a href='".URL("conversation/restorePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Restore")."' class='control-restore'><i class='icon-reply'></i></a>";
+			$formatted["controls"][] = "<a href='".URL("conversation/restorePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Restore")."' class='control-restore'><i class='fa fa-reply'></i></a>";
 	}
 
 	$this->trigger("formatPostForTemplate", array(&$formatted, $post, $conversation));
@@ -1352,7 +1352,7 @@ protected function displayPost($content)
 protected function getEditControls($id)
 {
 	$controls = array(
-		"quote" => "<a href='javascript:ETConversation.quote(\"$id\");void(0)' class='control-quote' title='".T("Quote")."' accesskey='q'><i class='icon-quote-left'></i></a>",
+		"quote" => "<a href='javascript:ETConversation.quote(\"$id\");void(0)' class='control-quote' title='".T("Quote")."' accesskey='q'><i class='fa fa-quote-left'></i></a>",
 	);
 
 	$this->trigger("getEditControls", array(&$controls, $id));

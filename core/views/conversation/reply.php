@@ -20,7 +20,7 @@ $body = $form->input("content", "textarea", array("cols" => "200", "rows" => "20
 $footer = "<div class='editButtons'>".
 	$form->button("postReply", !$conversation["conversationId"] ? T("Start Conversation") : T("Post a Reply"), array("class" => "big submit postReply", "tabindex" => 300)).
 	"<span class='draftButtons'>".
-	"<a href='".URL("conversation/discard/".$conversation["conversationId"]."?token=".ET::$session->token)."' class='button big discardDraft' title='".T("Discard")."'><i class='icon-trash'></i></a> ".
+	"<a href='".URL("conversation/discard/".$conversation["conversationId"]."?token=".ET::$session->token)."' class='button big discardDraft' title='".T("Discard")."'><i class='fa fa-trash'></i></a> ".
 	$form->button("saveDraft", T("Save Draft"), array("class" => "big saveDraft", "tabindex" => 400)).
 	"</span></div>";
 
